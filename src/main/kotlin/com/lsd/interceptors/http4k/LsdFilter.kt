@@ -26,7 +26,7 @@ class LsdFilterProvider(
                 val sourceName = nameCleaner(sourceNameProvider(request))
                 val targetHost = nameCleaner(targetNameProvider(request))
                 val startTime = Instant.now()
-                val requestBodyCopy = request.body.stream.readAllBytes()
+                val requestBodyCopy = request.body.payload.array()
                 lsd.capture(
                     messageBuilder()
                         .id(lsd.idGenerator.next())
@@ -49,7 +49,7 @@ class LsdFilterProvider(
                         ).build()
                 )
                 val originalResponse = next(request.body(requestBodyCopy.inputStream()))
-                val responseBodyCopy = originalResponse.body.stream.readAllBytes()
+                val responseBodyCopy = originalResponse.body.payload.array()
                 val durationMillis = Instant.now().toEpochMilli() - startTime.toEpochMilli()
 
                 originalResponse.body(responseBodyCopy.inputStream()).also { response ->
