@@ -9,4 +9,35 @@
 
 Provides a Http4k Filter for intercepting http requests and responses and adding the details to the provided lsdContext instance.
 
-See  [lsd-core](https://github.com/lsd-consulting/lsd-core) project for details on how the reports with sequence diagrams can be generated.
+## Usage
+
+Add dependencies
+
+```groovy
+    implementation 'io.github.lsd-consulting:lsd-core:<version>'
+    implementation 'io.github.lsd-consulting:lsd-interceptors-http4k:<version>'
+```
+
+Configure an interceptor with an LsdContext
+
+```kotlin
+    // Obtain an instance of an LsdContext 
+    private val lsd = LsdContext.instance
+
+    // Pass the lsdContext instance to the filter provider (along with any additional options)
+    private val lsdFilter = LsdFilterProvider(lsd).filter
+```
+
+Include the filter in the filter chain
+
+```kotlin
+    val app = lsdFilter.then(appHandler)
+```
+
+Generate the report
+```kotlin
+lsd.completeScenario("scenario title")
+lsd.completeReport("report title")
+```
+
+See  [lsd-core](https://github.com/lsd-consulting/lsd-core) project for further details on how the reports with sequence diagrams can be generated.
