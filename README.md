@@ -11,14 +11,14 @@ Provides a Http4k Filter for intercepting http requests and responses and adding
 
 ## Usage
 
-Add dependencies
+- Add dependencies
 
 ```groovy
     implementation 'io.github.lsd-consulting:lsd-core:<version>'
     implementation 'io.github.lsd-consulting:lsd-interceptors-http4k:<version>'
 ```
 
-Configure an interceptor with an LsdContext
+- Configure an interceptor with an LsdContext
 
 ```kotlin
     // Obtain an instance of an LsdContext 
@@ -28,15 +28,23 @@ Configure an interceptor with an LsdContext
     private val lsdFilter = LsdFilterProvider(lsd).filter
 ```
 
-Include the filter in the filter chain
+- Include the filter in the filter chain for your application handler e.g.
 
 ```kotlin
     val app = lsdFilter.then(appHandler)
 ```
 
-Generate the report
+- Invoke your application with requests, e.g. via tests
+  - By default `User-Agent` header is used to determine the source participant name
+  - By default `Host` header is used to determine the target participant name
+  - You can override these when instantiating the LsdFilterProvider class by overriding the `sourceNameProvider` or `targetNameProvider` to use alternative headers or anything else available in the `Request` 
+
+- Generate the report:
 ```kotlin
+// You can capture multiple scenarios within a report
 lsd.completeScenario("scenario title")
+
+// Finally created the report
 lsd.completeReport("report title")
 ```
 
