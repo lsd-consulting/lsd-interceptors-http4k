@@ -9,6 +9,7 @@
 
 Provides a Http4k Filter for intercepting http requests and responses and adding the details to the provided lsdContext instance.
 
+----
 ## Usage
 
 - Add dependencies
@@ -48,4 +49,9 @@ lsd.completeScenario("scenario title")
 lsd.completeReport("report title")
 ```
 
+For a contrived example, see file `ExampleWithReportGenerated.kt` which was used to generate the below report. Each arrow can be clicked to reveal the headers and body of each request and response:
+
+![example.png](docs%2Fexample.png)
+
+---
 See  [lsd-core](https://github.com/lsd-consulting/lsd-core) project for further details on how the reports with sequence diagrams can be generated.
