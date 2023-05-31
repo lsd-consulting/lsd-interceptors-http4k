@@ -8,6 +8,7 @@ import org.http4k.core.Filter
 import org.http4k.core.Request
 import java.io.BufferedReader
 import java.io.ByteArrayInputStream
+import java.time.Duration
 import java.time.Instant
 import java.util.zip.GZIPInputStream
 import java.util.zip.ZipInputStream
@@ -56,7 +57,9 @@ class LsdFilterProvider(
 
             originalResponse.body(responseBodyCopy.inputStream()).also { response ->
                 lsd.capture(
-                    messageBuilder().id(lsd.idGenerator.next()).data(
+                    messageBuilder().id(lsd.idGenerator.next())
+                        .duration(Duration.ofMillis(durationMillis))
+                        .data(
                         """
                                    | <section>
                                    |   <h3>RESPONSE</h3>

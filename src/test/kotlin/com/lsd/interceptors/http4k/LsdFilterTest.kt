@@ -152,6 +152,7 @@ class LsdFilterTest {
         assertThat(lsd.messages).hasSize(2)
         assertRequestMessage(lsd.requestMessage())
         assertResponseMessage(lsd.responseMessage(), scenario)
+        assertThat(lsd.responseMessage().duration).isNotNull()
     }
 
     private fun aGetRequest() =
