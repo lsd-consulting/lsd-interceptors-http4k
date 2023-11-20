@@ -23,7 +23,7 @@ kotlin {
 }
 
 dependencies {
-    implementation 'io.github.lsd-consulting:lsd-core:6.1.12'
+    implementation 'io.github.lsd-consulting:lsd-core:7.0.1'
     implementation 'org.http4k:http4k-core:5.10.3.0'
 
     testImplementation 'org.assertj:assertj-core:3.24.2'
