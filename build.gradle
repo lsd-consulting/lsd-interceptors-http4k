@@ -24,7 +24,7 @@ kotlin {
 
 dependencies {
     implementation 'io.github.lsd-consulting:lsd-core:6.1.12'
-    implementation 'org.http4k:http4k-core:5.35.2.0'
+    implementation 'org.http4k:http4k-core:5.35.5.0'
 
     testImplementation 'org.assertj:assertj-core:3.26.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.11.3'
